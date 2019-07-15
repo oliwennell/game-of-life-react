@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.dev.js --port 4000",
-    "test": "jest"
+    "test": "jest",
+    "watch": "jest --watch"
   },
   "author": "",
   "license": "ISC",
