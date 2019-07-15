@@ -1,12 +1,9 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Cell from "./Cell";
 
-function Grid(props) {
-    return (
-        <div>
-            { props.rows.map(renderRow) }
-        </div>
-    );
+const Grid = props => {
+    return ( props.rows.map(renderRow) );
 }
 
 function renderRow(row, rowIndex) {
@@ -22,5 +19,9 @@ function renderRow(row, rowIndex) {
         </div>
     )
 }
+
+Grid.propTypes = {
+    rows: PropTypes.array
+};
 
 export default Grid;
