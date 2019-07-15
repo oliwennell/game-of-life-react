@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 
 const Cell = props => {
-    const [isAlive, setIsAlive] = useState(props.isAlive);
-
-    return <div className="column"
-                onClick={() => setIsAlive(!isAlive)}>
-               {isAlive ? '👾' : '💀'}
-           </div>
+    return <div className="column">
+               {props.isAlive ? '👾' : '💀'}
+           </div>;
 }
 
 Cell.propTypes = {

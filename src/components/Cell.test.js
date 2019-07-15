@@ -15,18 +15,6 @@ describe("When an alive cell is rendered", () => {
         expect(cellElements.length).toBe(1);
         expect(cellElements.text()).toBe('👾')
     })
-
-    describe("And it is clicked", () => {
-
-        beforeEach(() => {
-            renderedDom.find("div").simulate("click");
-        });
-
-        it("Then it becomes dead", () => {
-            const cellElements = renderedDom.find("div");
-            expect(cellElements.text()).toBe('💀');
-        })
-    })
 })
 
 describe("When a dead cell is rendered", () => {
@@ -41,18 +29,6 @@ describe("When a dead cell is rendered", () => {
         const cellElements = renderedDom.find("div");
         expect(cellElements.length).toBe(1);
         expect(cellElements.text()).toBe('💀');
-    })
-
-    describe("And it is clicked", () => {
-
-        beforeEach(() => {
-            renderedDom.find("div").simulate("click");
-        });
-
-        it("Then it becomes alive", () => {
-            const cellElements = renderedDom.find("div");
-            expect(cellElements.text()).toBe('👾');
-        })
     })
 })
 

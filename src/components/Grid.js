@@ -10,9 +10,9 @@ function renderRow(row, rowIndex) {
     return (
         <div className="row" key={rowIndex}>
         {
-            row.map(cell => 
+            row.map((cell, index) => 
                 <Cell id={cell.id}
-                      key={cell.id}
+                      key={index}
                       isAlive={cell.isAlive}
                        />)
         }
