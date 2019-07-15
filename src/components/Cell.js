@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
 function Cell(props) {
-    return <div>{props.isAlive ? '👾' : '💀'}</div>
+    const [isAlive, setIsAlive] = useState(props.isAlive);
+
+    return <div onClick={() => setIsAlive(!isAlive)}>
+               {isAlive ? '👾' : '💀'}
+           </div>
 }
 
 export default Cell;

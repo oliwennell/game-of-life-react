@@ -15,6 +15,18 @@ describe("When a cell is alive", () => {
         expect(cellElements.length).toBe(1);
         expect(cellElements.text()).toBe('👾')
     })
+
+    describe("And it is clicked", () => {
+
+        beforeEach(() => {
+            renderedDom.find("div").simulate("click");
+        });
+
+        it("Then it becomes dead", () => {
+            const cellElements = renderedDom.find("div");
+            expect(cellElements.text()).toBe('💀');
+        })
+    })
 })
 
 describe("When a cell is dead", () => {
@@ -23,12 +35,24 @@ describe("When a cell is dead", () => {
 
     beforeEach(() => {
         renderedDom = renderCell(false);
-    });
+    })
 
     it("Then it displays a 'dead' emoji", () => {
         const cellElements = renderedDom.find("div");
         expect(cellElements.length).toBe(1);
-        expect(cellElements.text()).toBe('💀')
+        expect(cellElements.text()).toBe('💀');
+    })
+
+    describe("And it is clicked", () => {
+
+        beforeEach(() => {
+            renderedDom.find("div").simulate("click");
+        });
+
+        it("Then it becomes alive", () => {
+            const cellElements = renderedDom.find("div");
+            expect(cellElements.text()).toBe('👾');
+        })
     })
 })
 
