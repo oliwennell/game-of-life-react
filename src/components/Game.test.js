@@ -1,7 +1,7 @@
 import React from "react";
 import Game from "./Game";
 import Grid from "./Grid";
-import { mount } from "enzyme";
+import { shallow } from "enzyme";
 
 describe("When the Game is rendered", () => {
     let renderedDom;
@@ -34,5 +34,5 @@ describe("When the user steps forward the simulation", () => {
 });
 
 function renderGame() {
-    return mount(<Game />);
+    return shallow(<Game />);
 }

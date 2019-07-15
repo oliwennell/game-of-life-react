@@ -1,6 +1,6 @@
 import React from "react";
 import Cell from "./Cell";
-import { mount } from "enzyme";
+import { shallow } from "enzyme";
 
 describe("When an alive cell is rendered", () => {
     
@@ -33,5 +33,5 @@ describe("When a dead cell is rendered", () => {
 })
 
 function renderCell(isAlive) {
-    return mount(<Cell isAlive={isAlive} />);
+    return shallow(<Cell isAlive={isAlive} />);
 }
