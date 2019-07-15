@@ -1,6 +1,12 @@
 
+const isAlive = (columnIndex, rowIndex, rows) => !!(rows[rowIndex][columnIndex]);
+
+const isWithinGrid = (columnIndex, rowIndex, rows) =>
+    rowIndex >= 0 && rowIndex < rows.length &&
+    columnIndex >= 0 && columnIndex < rows[0].length;
+
 function numAliveNeighbours(columnIndex, rowIndex, rows) {
-    const deltas = [
+    const neighbourDeltas = [
         [ -1,  1 ],
         [  0,  1 ],
         [  1,  1 ],
@@ -10,16 +16,12 @@ function numAliveNeighbours(columnIndex, rowIndex, rows) {
         [  0, -1 ],
         [  1, -1 ]
     ];
-    return deltas
+    return neighbourDeltas
         .map(([ deltaX, deltaY ]) => [ columnIndex + deltaX, rowIndex + deltaY ])
-        .map(([ neighbourX, neighbourY ]) => isAlive(neighbourX, neighbourY, rows))
+        .filter(([ neighbourX, neighbourY ]) => isWithinGrid(neighbourY, neighbourX, rows))
+        .map(([ neighbourX, neighbourY ]) => isAlive(neighbourY, neighbourX, rows))
         .map(isNeighbourAlive => isNeighbourAlive ? 1 : 0)
         .reduce((accumulator, currentValue) => accumulator + currentValue);
-}
-
-function isAlive(columnIndex, rowIndex, rows) {
-    const neighbour = rows[rowIndex][columnIndex];
-    return !!neighbour;
 }
 
 export default numAliveNeighbours;

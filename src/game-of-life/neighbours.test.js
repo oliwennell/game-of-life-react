@@ -50,4 +50,29 @@ describe("counting the number of alive neighbours a cell has", () => {
             expect(result).toBe(1);
         });
     });
+
+
+    [
+        [ 0, 0 ],
+        [ 1, 0 ],
+        [ 2, 0 ],
+        [ 0, 1 ],
+        [ 2, 1 ],
+        [ 0, 2 ],
+        [ 1, 2 ],
+        [ 2, 2 ]
+    ]
+    .forEach(([ columnIndex, rowIndex ]) => {
+        it("neighbours still counted when cell is on the edge of the grid", () => {
+            const rows = [
+                [false, false, false],
+                [false, true, false],
+                [false, false, false]
+            ];
+
+            const result = numAliveNeighbours(columnIndex, rowIndex, rows);
+
+            expect(result).toBe(1);
+        });
+    });
 });
