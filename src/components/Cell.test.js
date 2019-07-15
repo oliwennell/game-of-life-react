@@ -2,7 +2,7 @@ import React from "react";
 import Cell from "./Cell";
 import { mount } from "enzyme";
 
-describe("When a cell is alive", () => {
+describe("When an alive cell is rendered", () => {
     
     let renderedDom;
 
@@ -29,7 +29,7 @@ describe("When a cell is alive", () => {
     })
 })
 
-describe("When a cell is dead", () => {
+describe("When a dead cell is rendered", () => {
 
     let renderedDom;
 
