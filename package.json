@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.dev.js --port 4000"
+    "start": "webpack-dev-server --config webpack.config.dev.js --port 4000",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +24,7 @@
     "eslint-plugin-import": "2.18.0",
     "eslint-plugin-react": "7.14.2",
     "html-webpack-plugin": "3.2.0",
+    "jest": "24.8.0",
     "webpack": "4.35.3",
     "webpack-bundle-analyzer": "3.3.2",
     "webpack-cli": "3.3.5",
