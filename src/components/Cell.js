@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-function Sweet(props) {
-    return <p>hello</p>
+function Cell(props) {
+    return <div>{props.isAlive ? '👾' : '💀'}</div>
 }
 
-export default Sweet;
+export default Cell;

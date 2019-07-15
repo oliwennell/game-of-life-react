@@ -1,6 +1,6 @@
 import React from "react";
 import Cell from "./Cell";
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
 
 describe("When a cell is alive", () => {
     
@@ -12,11 +12,26 @@ describe("When a cell is alive", () => {
 
     it("Then it displays an 'alive' emoji", () => {
         const cellElements = renderedDom.find("div");
-        expect(cellElements).to.have.lengthOf(1);
-        expect(cellElements[0].text()).toBe('👾')
+        expect(cellElements.length).toBe(1);
+        expect(cellElements.text()).toBe('👾')
+    })
+})
+
+describe("When a cell is dead", () => {
+
+    let renderedDom;
+
+    beforeEach(() => {
+        renderedDom = renderCell(false);
+    });
+
+    it("Then it displays a 'dead' emoji", () => {
+        const cellElements = renderedDom.find("div");
+        expect(cellElements.length).toBe(1);
+        expect(cellElements.text()).toBe('💀')
     })
 })
 
 function renderCell(isAlive) {
-    return shallow(<Cell isAlive={isAlive} />);
+    return mount(<Cell isAlive={isAlive} />);
 }
