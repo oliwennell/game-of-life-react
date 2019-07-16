@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///index.css"],"names":[],"mappings":"AAAA,KACI,aACJ,CAEA,QACI,kBACJ,C","file":"main.337ae5f78ebffff4b019.css","sourcesContent":[".row {\n    display: table\n}\n\n.column {\n    display: table-cell;\n}"],"sourceRoot":""}
