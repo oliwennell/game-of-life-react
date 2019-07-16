@@ -6,9 +6,10 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.dev.js --port 4000",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "watch": "jest --watch",
     "clean:build": "rimraf ./build && mkdir build",
-    "prebuild": "run-p clean:build test",
+    "prebuild": "run-p clean:build test:coverage",
     "build": "webpack --config webpack.config.prod.js",
     "serve:build": "http-server ./build"
   },
