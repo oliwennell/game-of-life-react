@@ -26,6 +26,41 @@ describe("counting the number of alive neighbours a cell has", () => {
         });
     });
 
+    describe("when vertical neighbours are alive", () => {
+        const rows = [
+            [true,  true,  true],
+            [false, false, false],
+            [false, false, false]
+        ];
+
+        it("then the count only includes those alive neighbours", () => {
+            expect(numAliveNeighbours(1, 1, rows)).toBe(3);
+        });
+    });
+
+    describe("when horizontal neighbours are alive", () => {
+        const rows = [
+            [true, false, false],
+            [true, false, false],
+            [true, false, false]
+        ];
+
+        it("then the count only includes those alive neighbours", () => {
+            expect(numAliveNeighbours(1, 1, rows)).toBe(3);
+        });
+    });
+
+    describe("when diagonal neighbours are alive", () => {
+        const rows = [
+            [false, true],
+            [false, false],
+        ];
+
+        it("then the count only includes those alive neighbours", () => {
+            expect(numAliveNeighbours(0, 1, rows)).toBe(1);
+        });
+    });
+
     [
         [ 0, 0 ],
         [ 1, 0 ],
@@ -50,7 +85,6 @@ describe("counting the number of alive neighbours a cell has", () => {
             expect(result).toBe(1);
         });
     });
-
 
     [
         [ 0, 0 ],

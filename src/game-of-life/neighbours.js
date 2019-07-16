@@ -18,8 +18,8 @@ function numAliveNeighbours(columnIndex, rowIndex, rows) {
     ];
     return neighbourDeltas
         .map(([ deltaX, deltaY ]) => [ columnIndex + deltaX, rowIndex + deltaY ])
-        .filter(([ neighbourX, neighbourY ]) => isWithinGrid(neighbourY, neighbourX, rows))
-        .map(([ neighbourX, neighbourY ]) => isAlive(neighbourY, neighbourX, rows))
+        .filter(([ neighbourX, neighbourY ]) => isWithinGrid(neighbourX, neighbourY, rows))
+        .map(([ neighbourX, neighbourY ]) => isAlive(neighbourX, neighbourY, rows))
         .map(isNeighbourAlive => isNeighbourAlive ? 1 : 0)
         .reduce((accumulator, currentValue) => accumulator + currentValue);
 }

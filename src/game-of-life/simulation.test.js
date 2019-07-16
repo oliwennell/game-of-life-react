@@ -43,7 +43,7 @@ it("Any live cell with more than three live neighbours dies", () => {
 
     const nextGrid = simulate(originalGrid);
 
-    expect(nextGrid[1][1]).toBe(false);
+    expect(nextGrid[1][1]).toEqual(false);
 });
 
 it("Any dead cell with three live neighbours becomes a live cell", () => {

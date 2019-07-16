@@ -1,5 +1,6 @@
 import React from "react";
 import Grid from "./Grid";
+import simulate from "./../game-of-life/simulation";
 
 class Game extends React.Component {
 
@@ -10,7 +11,6 @@ class Game extends React.Component {
             rows: Game._initialGridRows()
         }
 
-        this.stepCount = 0;
         this._onStepForwardClicked = this._onStepForwardClicked.bind(this);
     }
 
@@ -31,15 +31,24 @@ class Game extends React.Component {
     }
 
     _stepForward() {
-        const newRows = this.state.rows.map(r => r.slice());
-        newRows[0][0].isAlive = !newRows[0][0].isAlive;
-        newRows[0][0].id = this.stepCount * 1000000;
-        this.stepCount++;
-        return newRows;
+        // return simulate(this.state.rows.map((r, ri) => r.map((c, ci) => [ c.isAlive, ci ])))
+        //     .map(r => r.map(c => ({isAlive: c})));
+
+        const toModel = rows => rows.map(row => row.map(cell => cell.isAlive));
+
+        const toViewModel = rows => rows.map((row, rowIndex) =>
+            row.map((cellIsAlive, columnIndex) => ({ 
+                isAlive: cellIsAlive,
+                id: (rowIndex * 100) + columnIndex
+            })));
+
+        const from = toModel(this.state.rows);
+        const to = simulate(from);
+        return toViewModel(to);
     }
 
     static _initialGridRows() {
-        const gridSize = 10;
+        const gridSize = 30;
 
         const generateRow = rowIndex =>
             new Array(gridSize)
@@ -52,6 +61,17 @@ class Game extends React.Component {
         const rows = Array.from(
             new Array(gridSize),
             (_, i) => generateRow(i));
+
+        const startX = 10;
+        const startY = 10;
+        [
+            [2, 0],
+            [3, 0],
+            [1, 1],
+            [2, 1],
+            [2, 2]
+        ]
+        .forEach(([x, y]) => rows[startX+y][startY+x].isAlive = true);
 
         return rows;
     }
