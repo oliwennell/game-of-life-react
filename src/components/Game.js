@@ -31,9 +31,6 @@ class Game extends React.Component {
     }
 
     _stepForward() {
-        // return simulate(this.state.rows.map((r, ri) => r.map((c, ci) => [ c.isAlive, ci ])))
-        //     .map(r => r.map(c => ({isAlive: c})));
-
         const toModel = rows => rows.map(row => row.map(cell => cell.isAlive));
 
         const toViewModel = rows => rows.map((row, rowIndex) =>
@@ -42,9 +39,9 @@ class Game extends React.Component {
                 id: (rowIndex * 100) + columnIndex
             })));
 
-        const from = toModel(this.state.rows);
-        const to = simulate(from);
-        return toViewModel(to);
+        const model = toModel(this.state.rows);
+        const newModel = simulate(model);
+        return toViewModel(newModel);
     }
 
     static _initialGridRows() {
