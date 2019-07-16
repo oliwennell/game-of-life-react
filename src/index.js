@@ -3,4 +3,6 @@ import { render } from 'react-dom';
 import Game from "./components/Game";
 import "./index.css"
 
-render(<Game />, document.getElementById("root"));
+const startTimer = callback => setInterval(callback, 250);
+
+render(<Game startTimerFn={startTimer} />, document.getElementById("root"));

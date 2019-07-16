@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Grid from "./Grid";
 import simulate from "./../game-of-life/simulation";
 
@@ -7,11 +8,15 @@ class Game extends React.Component {
     constructor(props) {
         super(props);
 
+        this.startTimerFn = props.startTimerFn;
+
         this.state = {
             rows: Game._initialGridRows()
         }
 
+        this._stepForward = this._stepForward.bind(this);
         this._onStepForwardClicked = this._onStepForwardClicked.bind(this);
+        this._onStartAutoStepClicked = this._onStartAutoStepClicked.bind(this);
     }
 
     render() {
@@ -22,12 +27,20 @@ class Game extends React.Component {
                         onClick={this._onStepForwardClicked}>
                     Step
                 </button>
+                <button id="auto-step"
+                        onClick={this._onStartAutoStepClicked}>
+                    GO
+                </button>
             </div>
         );
     }
 
     _onStepForwardClicked() {
-        this.setState({ rows: this._stepForward() });
+        this._stepForward();
+    }
+
+    _onStartAutoStepClicked() {
+        this.startTimerFn(this._stepForward);
     }
 
     _stepForward() {
@@ -41,7 +54,9 @@ class Game extends React.Component {
 
         const model = toModel(this.state.rows);
         const newModel = simulate(model);
-        return toViewModel(newModel);
+        const newViewModel = toViewModel(newModel);
+
+        this.setState({ rows: newViewModel });
     }
 
     static _initialGridRows() {
@@ -72,6 +87,10 @@ class Game extends React.Component {
 
         return rows;
     }
+}
+
+Game.propTypes = {
+    startTimerFn: PropTypes.func
 }
 
 export default Game;
