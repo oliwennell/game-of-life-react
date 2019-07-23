@@ -1,7 +1,9 @@
 # Game of Life - React
 
 An implementation of [Conway's Game Of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life) using [React](https://reactjs.org/).  
-My motivation was to go beyond "hello world" whilst learning React.
+My motivation was to go beyond "hello world" whilst learning React.  
+
+See it running [here](https://oliwennell.github.io/game-of-life-react/).
 
 ## Setup
 
