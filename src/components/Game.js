@@ -11,7 +11,7 @@ class Game extends React.Component {
         this.startTimerFn = props.startTimerFn;
 
         this.state = {
-            rows: Game._initialGridRows()
+            rows: Game._generateCellsWithRandomAliveness()
         }
 
         this._stepForward = this._stepForward.bind(this);
@@ -59,7 +59,7 @@ class Game extends React.Component {
         this.setState({ rows: newViewModel });
     }
 
-    static _initialGridRows() {
+    static _generateCellsWithRandomAliveness() {
         const gridSize = 30;
 
         const generateRow = rowIndex =>
@@ -73,17 +73,12 @@ class Game extends React.Component {
         const rows = Array.from(
             new Array(gridSize),
             (_, i) => generateRow(i));
-
-        const startX = 10;
-        const startY = 10;
-        [
-            [2, 0],
-            [3, 0],
-            [1, 1],
-            [2, 1],
-            [2, 2]
-        ]
-        .forEach(([x, y]) => rows[startX+y][startY+x].isAlive = true);
+        
+        for (let y=0; y<gridSize; ++y) {
+            for (let x=0; x<gridSize; ++x) {
+                rows[y][x].isAlive = Math.floor(Math.random()*2) == 1 ? true : false;
+            }
+        }
 
         return rows;
     }
