@@ -5,3 +5,8 @@
 .column {
     display: table-cell;
 }
+
+button {
+    padding: 20px;
+    margin: 10px;
+}
